@@ -15,49 +15,50 @@
     <th><a href="#">New</a></th>
     <th></th>
     <th>ID</th>
-    <th>name</th>
-    <th>population</th>
-    <th>language</th>
-    <th>capital</th>
+    <th>Card Title</th>
+    <th>Set</th>
+    <th>Language</th>
+    <th>PSA Grade</th>
   </tr>
   <tr>
     <td><a href="#">Edit</a></td>
     <td><a href="#">Delete</a></td>
     <td align="right" >1</td>
-    <td >Gemenon</td>
-    <td align="right" >2800000000</td>
-    <td>Old Gemenese</td>
-    <td>Oranu</td>
+    <td >Charizard</td>
+    <td align="right" >Base</td>
+    <td>English</td>
+    <td>7</td>
   </tr>
   <tr>
     <td><a href="#">Edit</a></td>
     <td><a href="#">Delete</a></td>
     <td align="right" >2</td>
-    <td>Leonis</td>
-    <td align="right" >2600000000</td>
-    <td >Leonese</td>
-    <td>Luminere</td>
+    <td>Blastoise</td>
+    <td align="right" >Fossil</td>
+    <td >English</td>
+    <td>9.5</td>
   </tr>
   <tr>
     <td><a href="#">Edit</a></td>
     <td><a href="#">Delete</a></td>
     <td>3</td>
-    <td>Caprica</td>
-    <td align="right" >4900000000</td>
-    <td>Caprican</td>
-    <td>Caprica City</td>
+    <td>Venusaur</td>
+    <td align="right" >NeoGen</td>
+    <td>Japanese</td>
+    <td>8</td>
   </tr>
 </table>
 <p>&nbsp;</p>
 </div> <!-- browse -->
 <div id="insert" style="display: block">
     <form id="addPlanet">
-        <legend><strong>Add Planet</strong></legend>
+        <legend><strong>Add Card</strong></legend>
           <fieldset class="fields">
-            <label> Name </label> <input type="text" name="name">
-            <label> Population </label> <input type="text" name="population">
+            <label> ID </label> <input type="text" value="1" name="name">
+            <label> Card Title </label> <input type="text"  name="population">
+            <label> Set </label> <input type="text" name="language">
             <label> Language </label> <input type="text" name="language">
-            <label> Capital </label> <input type="text" name="language">
+            <label> PSA Grade </label> <input type="text" name="language">
           </fieldset>
           <input class="btn" type="submit" id="addPlanet" value="Add a Planet">
           <input class="btn" type="button" value="cancel">
@@ -67,15 +68,15 @@
 <p>&nbsp;</p>
 <div id="update" style="display: block">
   <form id="updatePlanet">
-      <legend><strong>Update Planet</strong></legend>
+      <legend><strong>Update Card</strong></legend>
           <fieldset class="fields">
-          <label>ID:</label> 1
-            <label> Name </label> <input type="text" value="Gemenon" name="name">
-            <label> Population </label> <input type="text"  name="population" value="2800000000">
-            <label> Language </label> <input type="text" name="language" value="Old Gemenese">
-            <label> Capital </label> <input type="text" name="language" value="Oranu">
+          <label> ID </label> <input type="text">
+          <label> Card Title </label> <input type="text"  name="population" >
+          <label> Set </label> <input type="text" name="language">
+          <label> Language </label> <input type="text" name="language">
+          <label> PSA Grade </label> <input type="text" name="language">
     </fieldset>
-    <input class="btn" type="submit" id="UpdateSavePlanet" value="Save Update Planet">
+    <input class="btn" type="submit" id="UpdateSavePlanet" value="Save Update Card">
           <input class="btn" type="button" value="cancel" >
   </form> 
 </div><!-- update -->
