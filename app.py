@@ -22,15 +22,27 @@ app.template_folder = os.path.abspath('templates')
 # have homepage route to /people by default for convenience, generally this will be your home route with its own template
 @app.route('/')
 def index():
-    return render_template('/people.html')
+    return render_template('/users.html')
 
-@app.route('/planets.html')
-def planets():
-    return render_template('/planets.html')
+@app.route('/users.html')
+def users():
+    return render_template('/users.html')
 
-@app.route('/people.html')
-def people():
-    return render_template('/people.html')
+@app.route('/orders.html')
+def orders():
+    return render_template('/orders.html')
+
+@app.route('/shipments.html')
+def shipments():
+    return render_template('/shipments.html')
+
+@app.route('/payments.html')
+def payments():
+    return render_template('/payments.html')
+
+@app.route('/pokemoncardspecs.html')
+def pokemoncardspecs():
+    return render_template('/pokemoncardspecs.html')
 # Listener
 # change the port number if deploying on the flip servers
 if __name__ == "__main__":
