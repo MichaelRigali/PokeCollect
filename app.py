@@ -46,4 +46,4 @@ def pokemoncardspecs():
 # Listener
 # change the port number if deploying on the flip servers
 if __name__ == "__main__":
-    app.run(port=7337, debug=True)
+    app.run(port=41022, debug=True)
