@@ -18,47 +18,42 @@
     <th>Order ID</th>
     <th>Currency</th>
     <th>Payment Method</th>
-    <th>PSA Grade</th>
   </tr>
   <tr>
     <td><a href="#">Edit</a></td>
     <td><a href="#">Delete</a></td>
     <td align="right" >1</td>
-    <td >Charizard</td>
-    <td align="right" >Base</td>
-    <td>English</td>
-    <td>7</td>
+    <td align="right">1</td>
+    <td align="right" >USD</td>
+    <td>Credit Card</td>
   </tr>
   <tr>
     <td><a href="#">Edit</a></td>
     <td><a href="#">Delete</a></td>
-    <td align="right" >2</td>
-    <td>Blastoise</td>
-    <td align="right" >Fossil</td>
-    <td >English</td>
-    <td>9.5</td>
+    <td align="right" >1</td>
+    <td align="right">1</td>
+    <td align="right" >USD</td>
+    <td>Credit Card</td>
   </tr>
   <tr>
     <td><a href="#">Edit</a></td>
     <td><a href="#">Delete</a></td>
-    <td>3</td>
-    <td>Venusaur</td>
-    <td align="right" >NeoGen</td>
-    <td>Japanese</td>
-    <td>8</td>
+    <td align="right" >1</td>
+    <td align="right">1</td>
+    <td align="right" >USD</td>
+    <td>Credit Card</td>
   </tr>
 </table>
 <p>&nbsp;</p>
 </div> <!-- browse -->
 <div id="insert" style="display: block">
     <form id="addPlanet">
-        <legend><strong>Add Card</strong></legend>
+        <legend><strong>Add Payment</strong></legend>
           <fieldset class="fields">
-            <label> ID </label> <input type="text" name="name">
-            <label> Card Title </label> <input type="text"  name="population">
-            <label> Set </label> <input type="text" name="language">
-            <label> Language </label> <input type="text" name="language">
-            <label> PSA Grade </label> <input type="text" name="language">
+            <label> Payment Amount </label> <input type="text" name="name">
+            <label> Order ID </label> <input type="text"  name="population">
+            <label> Currency </label> <input type="text" name="language">
+            <label> Payment Method </label> <input type="text" name="language">
           </fieldset>
           <input class="btn" type="submit" id="addPlanet" value="Add a Card">
           <input class="btn" type="button" value="cancel">
@@ -68,13 +63,12 @@
 <p>&nbsp;</p>
 <div id="update" style="display: block">
   <form id="updatePlanet">
-      <legend><strong>Update Card</strong></legend>
+      <legend><strong>Update Payment</strong></legend>
           <fieldset class="fields">
-          <label> ID </label> <input type="text">
-          <label> Card Title </label> <input type="text"  name="population" >
-          <label> Set </label> <input type="text" name="language">
-          <label> Language </label> <input type="text" name="language">
-          <label> PSA Grade </label> <input type="text" name="language">
+            <label> Payment Amount </label> <input type="text" name="name">
+            <label> Order ID </label> <input type="text"  name="population">
+            <label> Currency </label> <input type="text" name="language">
+            <label> Payment Method </label> <input type="text" name="language">
     </fieldset>
     <input class="btn" type="submit" id="UpdateSavePlanet" value="Save Update Card">
           <input class="btn" type="button" value="cancel" >
@@ -83,12 +77,10 @@
 <p>&nbsp;</p>
 <div id="delete" style="display: block">
   <form id="deletePlanet">
-      <legend><strong>Delete Card</strong></legend>
+      <legend><strong>Delete Payment</strong></legend>
           <fieldset class="fields">
           <p>Are you sure you wish to delete the following?</p>
           <label>ID:</label> 1
-            <label> Name </label> Gemenon
-            
     </fieldset>
     <input class="btn" type="submit" id="DeletePlanet" value="Delete Planet">
           <input class="btn" type="button" value="cancel" >
