@@ -54,59 +54,20 @@
 
 <div id="browse">
 <p><a href="#" onClick="showAll()">Display all forms</a> </p>
-<table border="1" cellpadding="5">
-  <tr>
-    <th><a href="#" onClick="newPerson()">New</a></th>
-    <th></th>
-    <th>id</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <!-- <th>homeworld</th> -->
-    <th>age</th>
-  </tr>
-  <tr>
-    <td><a href="#" onClick="updatePerson('this.personID')">Edit</a></td>
-    <td><a href="#" onclick="deletePerson('this.personID')">Delete</a></td>
-    <td align="right" >1</td>
-    <td >William</td>
-    <td align="right" >Adama</td>
-    <!-- <td>Caprica</td> -->
-    <td>61</td>
-  </tr>
-  <tr>
-    <td><a href="#" onClick="updatePerson('this.personID')">Edit</a></td>
-    <td><a href="#" onclick="deletePerson('this.personID')">Delete</a></td>
-    <td align="right" >2</td>
-    <td>Lee</td>
-    <td align="right" >Adama</td>
-    <!-- <td >Caprica</td> -->
-    <td>30</td>
-  </tr>
-  <tr>
-    <td><a href="#" onClick="updatePerson('this.personID')">Edit</a></td>
-    <td><a href="#" onclick="deletePerson('this.personID')">Delete</a></td>
-    <td>3</td>
-    <td>Laura</td>
-    <td align="right" >Roslin</td>
-    <!-- <td>Caprica</td> -->
-    <td><em>NULL</em></td>
-  </tr>
-</table>
+
 <p>&nbsp;</p>
 </div> <!-- browse -->
 <div id="insert">
     <form method="POST" id="addPlanet">
-        <legend><strong>Add Person</strong></legend>
+        <legend><strong>Add User</strong></legend>
           <fieldset class="fields">
-            <label> first name </label> <input type="text" name="fname">
-            <label> last name </label> <input type="text" name="lname">
-            <!-- <label> Homeworld </label> <select name="homeworld">
-            	<option value="0">&nbsp;</option>
-                <option value="1">Gemenon</option>
-                <option value="2">Leonis</option>
-                <option value="3">Caprica</option>
-                </select> -->
-            <label> age </label> <input type="text" name="age">
+            <label> username </label> <input type="text" name="fname">
+            <label> password </label> <input type="text" name="lname">
+            <label> first_name </label> <input type="text" name="age">
+            <label> last_name </label> <input type="text" name="age">
+            <label> email </label> <input type="text" name="age">
+            <label> birthday </label> <input type="text" name="age">
+            <label> address </label> <input type="text" name="age">
       </fieldset>
           <input class="btn" type="submit" id="addPerson" value="Add Person">
           <input class="btn" type="button" value="cancel" onClick="browsePeople()">
@@ -119,15 +80,9 @@
           <fieldset class="fields">
           <input type="hidden" name="personID" id="updatepersonID" value="1">
           <label> ID: </label> 1
-            <label> first name </label> <input type="text" name="fname" value="William">
-            <label> last name </label> <input type="text" name="lname" value="Adama">
-            <!-- <label> Homeworld </label> <select name="homeworld">
-            	<option value="0">&nbsp;</option>
-                <option value="1" selected>Gemenon</option>
-                <option value="2">Leonis</option>
-                <option value="3">Caprica</option>
-                </select> -->
-            <label> age </label> <input type="text" name="age" value="61">
+            <label> first name </label> <input type="text" name="fname">
+            <label> last name </label> <input type="text" name="lname">
+            <label> age </label> <input type="text" name="age" >
       </fieldset>
           <input class="btn" type="submit" id="UpdateSavePerson" value="Save Update Person">
           <input class="btn" type="button" value="cancel" onClick="browsePeople()">
@@ -140,8 +95,8 @@
           <fieldset class="fields">
           <p>Are you sure you wish to delete the following?</p>
           <input type="hidden" name="personID" id="deletepersonID" value="1">
-          <label><strong>ID:</strong></label> 1
-            <label> <strong>Name</strong> </label> William Adama
+          <label><strong>ID:</strong></label> 
+            <label> <strong>Name:</strong> </label> 
             
     </fieldset>
     <input class="btn" type="submit" id="DeletePerson" value="Delete Person">

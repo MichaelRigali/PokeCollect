@@ -49,6 +49,28 @@ def users():
         return render_template("users.j2", data=data)
     return render_template('users.j2')
 
+@app.route('/add_user', methods=['POST'])
+def add_user():
+    if request.method == 'POST':
+        # Retrieve form data
+        uname = request.form['uname']
+        password = request.form['password']
+        fname = request.form['fname']
+        lname = request.form['lname']
+        email = request.form['email']
+        birthday = request.form['birthday']
+        address = request.form['address']
+
+        # Execute the SQL query for inserting a new user
+        query = "INSERT INTO Users (username, password, first_name, last_name, email, birthday, address) VALUES (%s, %s, %s, %s, %s, %s, %s);"
+        user_data = (uname, password, fname, lname, email, birthday, address)
+        cur = mysql.connection.cursor()
+        cur.execute(query, user_data)
+        mysql.connection.commit()
+
+        # Redirect to the main page after adding the user
+        return redirect('/users')
+
 @app.route('/orders.html')
 def orders():
     return render_template('/orders.html')
@@ -71,7 +93,7 @@ def pokemoncardspecs():
 @app.route("/delete_user/<int:id>")
 def delete_people(id):
     # mySQL query to delete the person with our passed id
-    query = "DELETE FROM Users WHERE id = '%s';"
+    query = "DELETE FROM Users WHERE user_id = '%s';"
     cur = mysql.connection.cursor()
     cur.execute(query, (id,))
     mysql.connection.commit()
@@ -82,4 +104,4 @@ def delete_people(id):
 # Listener
 # change the port number if deploying on the flip servers
 if __name__ == "__main__":
-    app.run(port=41025, debug=True)
+    app.run(port=41022, debug=True)

@@ -67,7 +67,7 @@
                         <!-- End of this for loop -->
                         {% endfor %} 
                     </tr>
-
+    
 				<tbody>
 					<!-- Now, iterate through every item in data -->{% for item in data %}
 					    <tr>
@@ -92,22 +92,21 @@
 
 
 <div id="insert">
-    <form method="POST" id="addPlanet">
-        <legend><strong>Add user</strong></legend>
-          <fieldset class="fields">
-            <label> first name </label> <input type="text" name="fname">
-            <label> last name </label> <input type="text" name="lname">
-            <!-- <label> Homeworld </label> <select name="homeworld">
-            	<option value="0">&nbsp;</option>
-                <option value="1">Gemenon</option>
-                <option value="2">Leonis</option>
-                <option value="3">Caprica</option>
-                </select> -->
-            <label> age </label> <input type="text" name="age">
-      </fieldset>
-          <input class="btn" type="submit" id="adduser" value="Add user">
-          <input class="btn" type="button" value="cancel" onClick="browseUsers()">
-	</form> 
+    <form method="POST" action="/add_user" id="addUser">
+        <legend><strong>Add User</strong></legend>
+        <fieldset class="fields">
+            <!-- Remove the user_id label since it's auto-incremented -->
+            <label> username </label> <input type="text" name="uname" required>
+            <label> password </label> <input type="text" name="password" required>
+            <label> first_name </label> <input type="text" name="fname" required>
+            <label> last_name </label> <input type="text" name="lname" required>
+            <label> email </label> <input type="text" name="email" required>
+            <label> birthday </label> <input type="text" name="birthday" required>
+            <label> address </label> <input type="text" name="address" required>
+        </fieldset>
+        <input class="btn" type="submit" id="adduser" value="Add">
+        <input class="btn" type="button" value="cancel" onClick="browseUsers()">
+    </form>
 </div><!-- insert -->
 <p>&nbsp;</p>
 <div id="update">
@@ -116,17 +115,11 @@
           <fieldset class="fields">
           <input type="hidden" name="user_id" id="updateuser_id" value="1">
           <label> ID: </label> 1
-            <label> first name </label> <input type="text" name="fname" value="William">
-            <label> last name </label> <input type="text" name="lname" value="Adama">
-            <!-- <label> Homeworld </label> <select name="homeworld">
-            	<option value="0">&nbsp;</option>
-                <option value="1" selected>Gemenon</option>
-                <option value="2">Leonis</option>
-                <option value="3">Caprica</option>
-                </select> -->
-            <label> age </label> <input type="text" name="age" value="61">
+            <label> first name </label> <input type="text" name="fname">
+            <label> last name </label> <input type="text" name="lname">
+            <label> age </label> <input type="text" name="age">
       </fieldset>
-          <input class="btn" type="submit" id="UpdateSaveuser" value="Save Update user">
+          <input class="btn" type="submit" id="UpdateSaveuser" value="Save">
           <input class="btn" type="button" value="cancel" onClick="browseUsers()">
 	</form> 
 </div><!-- update -->
@@ -136,12 +129,12 @@
       <legend><strong>Delete user</strong></legend>
           <fieldset class="fields">
           <p>Are you sure you wish to delete the following?</p>
-          <input type="hidden" name="user_id" id="deleteuser_id" value="1">
-          <label><strong>ID:</strong></label> 1
-            <label> <strong>Name</strong> </label> William Adama
+          <input type="hidden" name="user_id" id="deleteuser_id">
+          <label><strong>ID:</strong></label> 
+            <label> <strong>Name</strong> </label>
             
     </fieldset>
-    <input class="btn" type="submit" id="Deleteuser" value="Delete user">
+    <input class="btn" type="submit" id="Deleteuser" value="Delete">
           <input class="btn" type="button" value="cancel" onClick="browseUsers()">
   </form> 
 </div><!-- delete -->
