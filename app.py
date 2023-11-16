@@ -135,20 +135,6 @@ def payments():
 def pokemoncardspecs():
     return render_template('/pokemoncardspecs.html')
 
-
-####### delete routes #######
-# delete from Users
-@app.route("/delete_user/<int:id>")
-def delete_people(id):
-    # mySQL query to delete the person with our passed id
-    query = "DELETE FROM Users WHERE user_id = '%s';"
-    cur = mysql.connection.cursor()
-    cur.execute(query, (id,))
-    mysql.connection.commit()
-
-    # redirect back to people page
-    return redirect("/people")
-
 # Listener
 # change the port number if deploying on the flip servers
 if __name__ == "__main__":

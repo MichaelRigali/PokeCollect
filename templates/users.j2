@@ -80,7 +80,7 @@
 
                             <!-- Create our edit/delete buttons -->
 						    <td><a href="edit_user/{{item.user_id}}" class="btn btn-default">Edit</a></td>
-						    <td><a href="delete_users/{{item.id}}" class="btn btn-default">Delete</a></td>
+						    <td><a href="delete_user/{{item.user_id}}" class="btn btn-default">Delete</a></td>
 
 					    </tr> 
                         {% endfor %} 
@@ -126,6 +126,7 @@
 </div><!-- update -->
 #}
 <p>&nbsp;</p>
+{#
 <div id="delete" style="display: block">
   <form method="POST" id="deleteuser">
       <legend><strong>Delete user</strong></legend>
@@ -140,6 +141,6 @@
           <input class="btn" type="button" value="cancel" onClick="browseUsers()">
   </form> 
 </div><!-- delete -->
-
+#}
 </body>
 </html>
