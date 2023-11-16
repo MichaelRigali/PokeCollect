@@ -3,15 +3,17 @@ from flask_mysqldb import MySQL
 from flask import request
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 
 # database connection info
-app.config["MYSQL_HOST"] = "classmysql.engr.oregonstate.edu"
-app.config["MYSQL_USER"] = "cs340_higginde"
-app.config["MYSQL_PASSWORD"] = "6560"
-app.config["MYSQL_DB"] = "cs340_higginde"
-app.config["MYSQL_CURSORCLASS"] = "DictCursor"
+app.config["MYSQL_HOST"] = os.environ.get("MYSQL_HOST")
+app.config["MYSQL_USER"] = os.environ.get("MYSQL_USER")
+app.config["MYSQL_PASSWORD"] = os.environ.get("MYSQL_PASSWORD")
+app.config["MYSQL_DB"] = os.environ.get("MYSQL_DB")
+app.config["MYSQL_CURSORCLASS"] = os.environ.get("MYSQL_CURSORCLASS")
 
 mysql = MySQL(app)
 
@@ -53,23 +55,59 @@ def users():
 def add_user():
     if request.method == 'POST':
         # Retrieve form data
-        uname = request.form['uname']
+        username = request.form['username']
         password = request.form['password']
-        fname = request.form['fname']
-        lname = request.form['lname']
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
         email = request.form['email']
         birthday = request.form['birthday']
         address = request.form['address']
 
         # Execute the SQL query for inserting a new user
         query = "INSERT INTO Users (username, password, first_name, last_name, email, birthday, address) VALUES (%s, %s, %s, %s, %s, %s, %s);"
-        user_data = (uname, password, fname, lname, email, birthday, address)
+        user_data = (username, password, first_name, last_name, email, birthday, address)
         cur = mysql.connection.cursor()
         cur.execute(query, user_data)
         mysql.connection.commit()
 
         # Redirect to the main page after adding the user
         return redirect('/users')
+
+@app.route("/edit_user/<int:user_id>", methods=["POST", "GET"])
+def edit_user(user_id):
+    if request.method == "GET":
+        # mySQL query to grab the info of the person with our passed id
+        query = "SELECT * FROM Users WHERE user_id = %s" % (user_id)
+        cur = mysql.connection.cursor()
+        cur.execute(query)
+        data = cur.fetchall()
+
+        # render edit_people page passing our query data and homeworld data to the edit_people template
+        return render_template("edit_user.j2", data=data)
+
+    # meat and potatoes of our update functionality
+    if request.method == "POST":
+        # fire off if user clicks the 'Edit Person' button
+
+            # grab user form inputs
+        user_id = request.form["user_id"]
+        username = request.form["username"]
+        password = request.form["password"]
+        first_name = request.form["first_name"]
+        last_name = request.form["last_name"]
+        birthday = request.form['birthday']
+        email = request.form['email']
+        address = request.form['address']
+        print(username)
+
+        # call update query
+        query = "UPDATE Users SET Users.username = %s, Users.password = %s, Users.first_name = %s, Users.last_name = %s, Users.birthday = %s, Users.email = %s, Users.address = %s WHERE user_id = %s"
+        print(query)
+        cur = mysql.connection.cursor()
+        cur.execute(query, (username, password, first_name, last_name, birthday, email, address, user_id))
+        mysql.connection.commit()
+
+        return redirect("/users")
 
 @app.route('/orders.html')
 def orders():
