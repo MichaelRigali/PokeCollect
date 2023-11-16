@@ -109,6 +109,16 @@ def edit_user(user_id):
 
         return redirect("/users")
 
+@app.route('/delete_user/<int:id>', methods=['GET'])
+def delete_user(id):
+    # mySQL query to delete the user with the passed id
+    query = "DELETE FROM Users WHERE user_id = %s;"
+    cur = mysql.connection.cursor()
+    cur.execute(query, (id,))
+    mysql.connection.commit()
+    # Redirect back to the users page
+    return redirect("/users")
+
 @app.route('/orders.html')
 def orders():
     return render_template('/orders.html')
