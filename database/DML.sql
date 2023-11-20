@@ -6,7 +6,7 @@
 
 -- SELECT
 -- select all Users
-SELECT * FROM Users WHERE first_name = :first_name AND last_name = :last_name;
+SELECT * FROM Users;
 -- select all Cats
 SELECT customer_name, quantity_purchased, transaction_date FROM Orders;
 -- select all Shipments

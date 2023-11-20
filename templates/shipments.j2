@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Users</title>
+<title>Shipments</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 <script language="JavaScript">
 		function showform(dowhat) {
@@ -39,20 +39,20 @@
 				document.getElementById('delete').style.display = 'none';
 			}
 		}
-    function newuser() { showform('insert'); }
-    function updateuser(pid) { showform('update'); }
-    function deleteuser(pid) { showform ('delete'); }
-    function browseUsers() { showform ('browse'); }
+    function newshipment() { showform('insert'); }
+    function updateshipment(pid) { showform('update'); }
+    function deleteshipment(pid) { showform ('delete'); }
+    function browseShipments() { showform ('browse'); }
     function showAll() { showform ('all'); }
 </script>
 </head>
 
-<body onload="browseUsers()">
-    <h1>Users</h1>
+<body onload="browseShipments()">
+    <h1>Shipments</h1>
     [ <a href="users">Users</a> | <a href="orders">Orders</a> | <a href="shipments">Shipments</a> | <a href="payments">Payments</a> | <a href="pokemoncardspecs">PokemonCardSpecs</a>]
 
     <div id="browse">
-        <p><a href="#" onClick="showAll()">Add User</a> </p>
+        <p><a href="#" onClick="showAll()">Add Shipment</a> </p>
         <table border="1" cellpadding="5">
             <!-- Access data tuple passed from app.py --> 
             {% if data %}
@@ -79,8 +79,8 @@
                             {% endfor %}
 
                             <!-- Create our edit/delete buttons -->
-						    <td><a href="edit_user/{{item.user_id}}" class="btn btn-default">Edit</a></td>
-						    <td><a href="delete_user/{{item.user_id}}" class="btn btn-default">Delete</a></td>
+						    <td><a href="edit_shipment/{{item.shipment_id}}" class="btn btn-default">Edit</a></td>
+						    <td><a href="delete_shipment/{{item.shipment_id}}" class="btn btn-default">Delete</a></td>
 
 					    </tr> 
                         {% endfor %} 
@@ -92,11 +92,11 @@
 
 
 <div id="insert">
-    <form method="POST" action="/add_user" id="addUser">
-        <legend><strong>Add User</strong></legend>
+    <form method="POST" action="/add_shipment" id="addShipment">
+        <legend><strong>Add Shipment</strong></legend>
         <fieldset class="fields">
-            <!-- Remove the user_id label since it's auto-incremented -->
-            <label> username </label> <input type="text" name="username" required>
+            <!-- Remove the shipment_id label since it's auto-incremented -->
+            <label> shipmentname </label> <input type="text" name="shipmentname" required>
             <label> password </label> <input type="text" name="password" required>
             <label> first_name </label> <input type="text" name="first_name" required>
             <label> last_name </label> <input type="text" name="last_name" required>
@@ -104,41 +104,41 @@
             <label> birthday </label> <input type="text" name="birthday" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" required>
             <label> address </label> <input type="text" name="address" required>
         </fieldset>
-        <input class="btn" type="submit" id="adduser" value="Add">
-        <input class="btn" type="button" value="cancel" onClick="browseUsers()">
+        <input class="btn" type="submit" id="addshipment" value="Add">
+        <input class="btn" type="button" value="cancel" onClick="browseShipments()">
     </form>
 </div><!-- insert -->
 <p>&nbsp;</p>
 {#
 <div id="update">
-    <form method="POST" id="Updateuser">
-        <legend><strong>Update user</strong></legend>
+    <form method="POST" id="Updateshipment">
+        <legend><strong>Update shipment</strong></legend>
           <fieldset class="fields">
-          <input type="hidden" name="user_id" id="updateuser_id" value="1">
+          <input type="hidden" name="shipment_id" id="updateshipment_id" value="1">
           <label> ID: </label> 1
             <label> first name </label> <input type="text" name="fname">
             <label> last name </label> <input type="text" name="lname">
             <label> age </label> <input type="text" name="age">
       </fieldset>
-          <input class="btn" type="submit" id="UpdateSaveuser" value="Save">
-          <input class="btn" type="button" value="cancel" onClick="browseUsers()">
+          <input class="btn" type="submit" id="UpdateSaveshipment" value="Save">
+          <input class="btn" type="button" value="cancel" onClick="browseShipments()">
 	</form> 
 </div><!-- update -->
 #}
 <p>&nbsp;</p>
 {#
 <div id="delete" style="display: block">
-  <form method="POST" id="deleteuser">
-      <legend><strong>Delete user</strong></legend>
+  <form method="POST" id="deleteshipment">
+      <legend><strong>Delete shipment</strong></legend>
           <fieldset class="fields">
           <p>Are you sure you wish to delete the following?</p>
-          <input type="hidden" name="user_id" id="deleteuser_id">
+          <input type="hidden" name="shipment_id" id="deleteshipment_id">
           <label><strong>ID:</strong></label> 
             <label> <strong>Name</strong> </label>
             
     </fieldset>
-    <input class="btn" type="submit" id="Deleteuser" value="Delete">
-          <input class="btn" type="button" value="cancel" onClick="browseUsers()">
+    <input class="btn" type="submit" id="Deleteshipment" value="Delete">
+          <input class="btn" type="button" value="cancel" onClick="browseShipments()">
   </form> 
 </div><!-- delete -->
 #}

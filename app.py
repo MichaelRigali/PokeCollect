@@ -119,21 +119,65 @@ def delete_user(id):
     # Redirect back to the users page
     return redirect("/users")
 
-@app.route('/orders.html')
+@app.route('/orders', methods=["POST", "GET"])
 def orders():
-    return render_template('/orders.html')
 
-@app.route('/shipments.html')
+    # Grab orders data so we send it to our template to display
+    if request.method == "GET":
+        # mySQL query to grab all orders data
+        query = "SELECT * FROM Orders"
+        cur = mysql.connection.cursor()
+        cur.execute(query)
+        data = cur.fetchall()
+
+        # render template
+        return render_template("orders.j2", data=data)
+    return render_template('orders.j2')
+
+@app.route('/shipments', methods=["POST", "GET"])
 def shipments():
-    return render_template('/shipments.html')
 
-@app.route('/payments.html')
+    # Grab shipments data so we send it to our template to display
+    if request.method == "GET":
+        # mySQL query to grab all shipments data
+        query = "SELECT * FROM Shipments"
+        cur = mysql.connection.cursor()
+        cur.execute(query)
+        data = cur.fetchall()
+
+        # render template
+        return render_template("shipments.j2", data=data)
+    return render_template('shipments.j2')
+
+@app.route('/payments', methods=["POST", "GET"])
 def payments():
-    return render_template('/payments.html')
 
-@app.route('/pokemoncardspecs.html')
+    # Grab payments data so we send it to our template to display
+    if request.method == "GET":
+        # mySQL query to grab all payments data
+        query = "SELECT * FROM Payments"
+        cur = mysql.connection.cursor()
+        cur.execute(query)
+        data = cur.fetchall()
+
+        # render template
+        return render_template("payments.j2", data=data)
+    return render_template('payments.j2')
+
+@app.route('/pokemoncardspecs', methods=["POST", "GET"])
 def pokemoncardspecs():
-    return render_template('/pokemoncardspecs.html')
+
+    # Grab pokemoncardspecs data so we send it to our template to display
+    if request.method == "GET":
+        # mySQL query to grab all pokemoncardspecs data
+        query = "SELECT * FROM PokemonCardSpecs"
+        cur = mysql.connection.cursor()
+        cur.execute(query)
+        data = cur.fetchall()
+
+        # render template
+        return render_template("pokemoncardspecs.j2", data=data)
+    return render_template('pokemoncardspecs.j2')
 
 # Listener
 # change the port number if deploying on the flip servers
