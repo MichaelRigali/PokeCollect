@@ -97,11 +97,9 @@ def edit_user(user_id):
         birthday = request.form['birthday']
         email = request.form['email']
         address = request.form['address']
-        print(username)
 
         # call update query
         query = "UPDATE Users SET Users.username = %s, Users.password = %s, Users.first_name = %s, Users.last_name = %s, Users.birthday = %s, Users.email = %s, Users.address = %s WHERE user_id = %s"
-        print(query)
         cur = mysql.connection.cursor()
         cur.execute(query, (username, password, first_name, last_name, birthday, email, address, user_id))
         mysql.connection.commit()
@@ -147,6 +145,67 @@ def shipments():
         # render template
         return render_template("shipments.j2", data=data)
     return render_template('shipments.j2')
+
+@app.route('/add_shipment', methods=['POST'])
+def add_shipment():
+    if request.method == 'POST':
+        # Retrieve form data
+        shipping_id = request.form['shipping_id']
+        user_id = request.form['user_id']
+        delivery_time = request.form['delivery_time']
+        carrier = request.form['carrier']
+        tracking_number = request.form['tracking_number']
+
+        # Execute the SQL query for inserting a new user
+        query = "INSERT INTO Shipments (shipping_id, user_id, delivery_time, carrier, tracking_number) VALUES (%s, %s, %s, %s, %s);"
+        shipping_data = (shipping_id, user_id, delivery_time, carrier, tracking_number)
+        cur = mysql.connection.cursor()
+        cur.execute(query, shipping_data)
+        mysql.connection.commit()
+
+        # Redirect to the main page after adding the user
+        return redirect('/shipments')
+
+@app.route("/edit_shipment/<int:shipping_id>", methods=["POST", "GET"])
+def edit_shipment(shipping_id):
+    if request.method == "GET":
+        # mySQL query to grab the info of the person with our passed id
+        query = "SELECT * FROM Shipments WHERE shipping_id = %s" % (shipping_id)
+        cur = mysql.connection.cursor()
+        cur.execute(query)
+        data = cur.fetchall()
+
+        # render edit_shipment page passing our query data to the edit_shipment template
+        return render_template("edit_shipment.j2", data=data)
+
+    # meat and potatoes of our update functionality
+    if request.method == "POST":
+        # fire off if user clicks the 'Edit Person' button
+
+        # grab shipment form inputs
+        shipping_id = request.form['shipping_id']
+        user_id = request.form['user_id']
+        delivery_time = request.form['delivery_time']
+        carrier = request.form['carrier']
+        tracking_number = request.form['tracking_number']
+
+        # call update query
+        query = "UPDATE Shipments SET Shipments.shipping_id = %s, Shipments.user_id = %s, Shipments.delivery_time = %s, Shipments.carrier = %s, Shipments.tracking_number = %s WHERE shipping_id = %s"
+        cur = mysql.connection.cursor()
+        cur.execute(query, (shipping_id, user_id, delivery_time, carrier, tracking_number, shipping_id))
+        mysql.connection.commit()
+
+        return redirect("/shipments")
+
+@app.route('/delete_shipment/<int:id>', methods=['GET'])
+def delete_shipment(id):
+    # mySQL query to delete the shipment with the passed id
+    query = "DELETE FROM Shipments WHERE shipping_id = %s;"
+    cur = mysql.connection.cursor()
+    cur.execute(query, (id,))
+    mysql.connection.commit()
+    # Redirect back to the users page
+    return redirect("/shipments")
 
 @app.route('/payments', methods=["POST", "GET"])
 def payments():

@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS Users, Orders, Shipments, Payments, PokemonCardSpecs, Pokem
 
 /*Create Users Table*/
 CREATE TABLE Users (
-    user_id int NOT NULL AUTO_INCREMENT UNIQUE ON ,
+    user_id int NOT NULL AUTO_INCREMENT UNIQUE,
     username varchar(50) NOT NULL UNIQUE,
     password varchar(256) NOT NULL,
     first_name varchar(15) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE Orders (
     PRIMARY KEY (order_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (product_id) REFERENCES PokemonCardSpecs(product_id),
-    FOREIGN KEY (shipping_id) REFERENCES Shipments(shipping_id)
+    FOREIGN KEY (shipping_id) REFERENCES Shipments(shipping_id) ON DELETE CASCADE
 );
 
 /*Create Shipments Table*/
@@ -61,7 +61,7 @@ CREATE TABLE Payments (
     currency varchar(15) NOT NULL,
     payment_method varchar(15) NOT NULL,
     PRIMARY KEY (payment_amount),
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id)
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE
 );
 
 /*Create PokemonCardSpecs Table*/
