@@ -52,7 +52,7 @@
     [ <a href="users">Users</a> | <a href="orders">Orders</a> | <a href="shipments">Shipments</a> | <a href="payments">Payments</a> | <a href="pokemoncardspecs">PokemonCardSpecs</a>]
 
     <div id="browse">
-        <p><a href="#" onClick="showAll()">Add User</a> </p>
+        <p><a href="#" onClick="showAll()">Add PokemonCardSpec</a> </p>
         <table border="1" cellpadding="5">
             <!-- Access data tuple passed from app.py --> 
             {% if data %}
@@ -92,7 +92,7 @@
 
 
 <div id="insert">
-    <form method="POST" action="/add_pokemoncardspec" id="addUser">
+    <form method="POST" action="/add_pokemoncardspec" id="addpokemoncardspec">
         <legend><strong>Add User</strong></legend>
         <fieldset class="fields">
             <!-- Remove the pokemoncardspec_id label since it's auto-incremented -->

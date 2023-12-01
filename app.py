@@ -1,6 +1,5 @@
-from flask import Flask, render_template, json, redirect
+from flask import Flask, render_template, json, redirect, request
 from flask_mysqldb import MySQL
-from flask import request
 import os
 
 from dotenv import load_dotenv
@@ -182,4 +181,4 @@ def pokemoncardspecs():
 # Listener
 # change the port number if deploying on the flip servers
 if __name__ == "__main__":
-    app.run(port=41022, debug=True)
+    app.run(port=41027 , debug=True)
