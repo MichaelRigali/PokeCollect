@@ -95,14 +95,11 @@
     <form method="POST" action="/add_payment" id="addPayment">
         <legend><strong>Add Payment</strong></legend>
         <fieldset class="fields">
-            <!-- Remove the payment_id label since it's auto-incremented -->
-            <label> paymentname </label> <input type="text" name="paymentname" required>
-            <label> password </label> <input type="text" name="password" required>
-            <label> first_name </label> <input type="text" name="first_name" required>
-            <label> last_name </label> <input type="text" name="last_name" required>
-            <label> email </label> <input type="text" name="email" required>
-            <label> birthday </label> <input type="text" name="birthday" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" required>
-            <label> address </label> <input type="text" name="address" required>
+            <label> Payment Amount </label> <input type="hidden" name="payment_id" required>
+            <label> Payment Amount </label> <input type="text" name="payment_amount" required>
+            <label> Order ID </label> <input type="text" name="order_id" required>
+            <label> Currency </label> <input type="text" name="currency" required>
+            <label> Payment Method </label> <input type="text" name="payment_method" required>
         </fieldset>
         <input class="btn" type="submit" id="addpayment" value="Add">
         <input class="btn" type="button" value="cancel" onClick="browsePayment()">
@@ -114,7 +111,7 @@
     <form method="POST" id="Updatepayment">
         <legend><strong>Update payment</strong></legend>
           <fieldset class="fields">
-          <input type="hidden" name="payment_id" id="updatepayment_id" value="1">
+          <input type="hidden" name="payment_amount" id="updatepayment_amount" value="1">
           <label> ID: </label> 1
             <label> first name </label> <input type="text" name="fname">
             <label> last name </label> <input type="text" name="lname">

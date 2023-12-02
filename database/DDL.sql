@@ -56,11 +56,12 @@ CREATE TABLE Shipments (
 
 /*Create Payments Table*/
 CREATE TABLE Payments (
+    payment_id int NOT NULL AUTO_INCREMENT UNIQUE,
     payment_amount DECIMAL (10, 2) NOT NULL,
     order_id int NOT NULL,
     currency varchar(15) NOT NULL,
     payment_method varchar(15) NOT NULL,
-    PRIMARY KEY (payment_amount),
+    PRIMARY KEY (payment_id),
     FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE
 );
 

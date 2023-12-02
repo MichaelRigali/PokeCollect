@@ -287,6 +287,37 @@ def payments():
         return render_template("payments.j2", data=data)
     return render_template('payments.j2')
 
+@app.route('/add_payment', methods=['POST'])
+def add_payment():
+    if request.method == 'POST':
+        # Retrieve form data
+        payment_id = request.form['payment_id']
+        payment_amount = request.form['payment_amount']
+        order_id = request.form['order_id']
+        currency = request.form['currency']
+        payment_method = request.form['payment_method']
+
+        # Execute the SQL query for inserting a new payment
+        query = "INSERT INTO Payments (payment_id, payment_amount, order_id, currency, payment_method) VALUES (%s, %s, %s, %s, %s);"
+        payment_data = (payment_id, payment_amount, order_id, currency, payment_method)
+        cur = mysql.connection.cursor()
+        cur.execute(query, payment_data)
+        mysql.connection.commit()
+
+        # Redirect to the main page after adding the payment
+        return redirect('/payments')
+
+@app.route('/delete_payment/<int:id>', methods=['GET'])
+def delete_payment(id):
+    # SQL query to delete the payment with the passed id
+    query = "DELETE FROM Payments WHERE payment_id = %s;"
+    cur = mysql.connection.cursor()
+    cur.execute(query, (id,))
+    mysql.connection.commit()
+
+    # Redirect back to the payments page
+    return redirect("/payments")
+
 @app.route('/pokemoncardspecs', methods=["POST", "GET"])
 def pokemoncardspecs():
 
@@ -374,4 +405,4 @@ def delete_pokemoncardspec(id):
 # Listener
 # change the port number if deploying on the flip servers
 if __name__ == "__main__":
-    app.run(port=41030, debug=True)
+    app.run(port=41031, debug=True)
