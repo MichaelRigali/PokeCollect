@@ -39,7 +39,7 @@ CREATE TABLE Orders (
     transaction_date DATE,
     PRIMARY KEY (order_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (product_id) REFERENCES PokemonCardSpecs(product_id),
+    FOREIGN KEY (product_id) REFERENCES PokemonCardSpecs(product_id) ON DELETE CASCADE,
     FOREIGN KEY (shipping_id) REFERENCES Shipments(shipping_id) ON DELETE CASCADE
 );
 

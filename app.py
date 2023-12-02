@@ -131,6 +131,71 @@ def orders():
         return render_template("orders.j2", data=data)
     return render_template('orders.j2')
 
+@app.route('/add_order', methods=['POST'])
+def add_order():
+    if request.method == 'POST':
+        # Retrieve form data
+        order_id = request.form['order_id']
+        user_id = request.form['user_id']
+        product_id = request.form['product_id']
+        shipping_id = request.form['shipping_id']
+        customer_name = request.form['customer_name']
+        quantity_purchased = request.form['quantity_purchased']
+        transaction_date = request.form['transaction_date']
+
+        # Execute the SQL query for inserting a new user
+        query = "INSERT INTO Orders (order_id, user_id, product_id, shipping_id, customer_name, quantity_purchased, transaction_date) VALUES (%s, %s, %s, %s, %s, %s, %s);"
+        order_data = (order_id, user_id, product_id, shipping_id, customer_name, quantity_purchased, transaction_date)
+        cur = mysql.connection.cursor()
+        cur.execute(query, order_data)
+        mysql.connection.commit()
+
+        # Redirect to the main page after adding the user
+        return redirect('/orders')
+
+@app.route("/edit_order/<int:order_id>", methods=["POST", "GET"])
+def edit_order(order_id):
+    if request.method == "GET":
+        # mySQL query to grab the info of the order with our passed id
+        query = "SELECT * FROM Orders WHERE order_id = %s" % (order_id)
+        cur = mysql.connection.cursor()
+        cur.execute(query)
+        data = cur.fetchall()
+
+        # render edit_shipment page passing our query data to the edit_shipment template
+        return render_template("edit_order.j2", data=data)
+
+    # meat and potatoes of our update functionality
+    if request.method == "POST":
+        # fire off if user clicks the 'Edit Person' button
+
+        # grab order form inputs
+        order_id = request.form['order_id']
+        user_id = request.form['user_id']
+        product_id = request.form['product_id']
+        shipping_id = request.form['shipping_id']
+        customer_name = request.form['customer_name']
+        quantity_purchased = request.form['quantity_purchased']
+        transaction_date = request.form['transaction_date']
+
+        # call update query
+        query = "UPDATE Orders SET Orders.order_id = %s, Orders.user_id = %s, Orders.product_id = %s, Orders.shipping_id = %s, Orders.customer_name = %s, Orders.quantity_purchased = %s, Orders.transaction_date = %s WHERE order_id = %s"
+        cur = mysql.connection.cursor()
+        cur.execute(query, (order_id, user_id, product_id, shipping_id, customer_name, quantity_purchased, transaction_date, order_id))
+        mysql.connection.commit()
+
+        return redirect("/orders")
+
+@app.route('/delete_order/<int:id>', methods=['GET'])
+def delete_order(id):
+    # mySQL query to delete the user with the passed id
+    query = "DELETE FROM Orders WHERE order_id = %s;"
+    cur = mysql.connection.cursor()
+    cur.execute(query, (id,))
+    mysql.connection.commit()
+    # Redirect back to the users page
+    return redirect("/orders")
+
 @app.route('/shipments', methods=["POST", "GET"])
 def shipments():
 
@@ -237,7 +302,76 @@ def pokemoncardspecs():
         return render_template("pokemoncardspecs.j2", data=data)
     return render_template('pokemoncardspecs.j2')
 
+@app.route("/edit_pokemoncardspec/<int:product_id>", methods=["POST", "GET"])
+def edit_pokemoncardspec(product_id):
+    if request.method == "GET":
+        # mySQL query to grab the info of the person with our passed id
+        query = "SELECT * FROM PokemonCardSpecs WHERE product_id = %s" % (product_id)
+        cur = mysql.connection.cursor()
+        cur.execute(query)
+        data = cur.fetchall()
+
+        # render edit_pokemoncardspec page passing our query data to the edit_pokemoncardspec template
+        return render_template("edit_pokemoncardspec.j2", data=data)
+
+    # meat and potatoes of our update functionality
+    if request.method == "POST":
+        # fire off if user clicks the 'Edit Person' button
+
+        # grab product form inputs
+        product_id = request.form['product_id']
+        card_name = request.form['card_name']
+        price = request.form['price']
+        grade = request.form['grade']
+        holographic = request.form['holographic']
+        edition = request.form['edition']
+        quantity_available = request.form['quantity_available']
+        card_set = request.form['card_set']
+        language = request.form['language']
+
+        # call update query
+        query = "UPDATE PokemonCardSpecs SET PokemonCardSpecs.product_id = %s, PokemonCardSpecs.card_name = %s, PokemonCardSpecs.price = %s, PokemonCardSpecs.grade = %s, PokemonCardSpecs.holographic = %s, PokemonCardSpecs.edition = %s, PokemonCardSpecs.quantity_available = %s, PokemonCardSpecs.card_set = %s, PokemonCardSpecs.language = %s WHERE product_id = %s"
+        cur = mysql.connection.cursor()
+        cur.execute(query, (product_id, card_name, price, grade, holographic, edition, quantity_available, card_set, language, product_id))
+        mysql.connection.commit()
+
+        return redirect("/pokemoncardspecs")
+
+@app.route('/add_pokemoncardspec', methods=['POST'])
+def add_pokemoncardspec():
+    if request.method == 'POST':
+        # Retrieve form data
+        product_id = request.form['product_id']
+        card_name = request.form['card_name']
+        price = request.form['price']
+        grade = request.form['grade']
+        holographic = request.form['holographic']
+        edition = request.form['edition']
+        quantity_available = request.form['quantity_available']
+        card_set = request.form['card_set']
+        language = request.form['language']
+
+        # Execute the SQL query for inserting a new user
+        query = "INSERT INTO PokemonCardSpecs (product_id, card_name, price, grade, holographic, edition, quantity_available, card_set, language) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);"
+        order_data = (product_id, card_name, price, grade, holographic, edition, quantity_available, card_set, language)
+        cur = mysql.connection.cursor()
+        cur.execute(query, order_data)
+        mysql.connection.commit()
+
+        # Redirect to the main page after adding the user
+        return redirect('/pokemoncardspecs')
+
+@app.route('/delete_pokemoncardspec/<int:id>', methods=['GET'])
+def delete_pokemoncardspec(id):
+    # mySQL query to delete the shipment with the passed id
+    query = "DELETE FROM PokemonCardSpecs WHERE product_id = %s;"
+    cur = mysql.connection.cursor()
+    cur.execute(query, (id,))
+    mysql.connection.commit()
+    # Redirect back to the users page
+    return redirect("/pokemoncardspecs")
+
 # Listener
 # change the port number if deploying on the flip servers
 if __name__ == "__main__":
-    app.run(port=41027 , debug=True)
+    app.run(port=41030, debug=True)

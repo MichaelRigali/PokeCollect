@@ -79,8 +79,8 @@
                             {% endfor %}
 
                             <!-- Create our edit/delete buttons -->
-						    <td><a href="edit_pokemoncardspec/{{item.pokemoncardspec_id}}" class="btn btn-default">Edit</a></td>
-						    <td><a href="delete_pokemoncardspec/{{item.pokemoncardspec_id}}" class="btn btn-default">Delete</a></td>
+						    <td><a href="edit_pokemoncardspec/{{item.product_id}}" class="btn btn-default">Edit</a></td>
+						    <td><a href="delete_pokemoncardspec/{{item.product_id}}" class="btn btn-default">Delete</a></td>
 
 					    </tr> 
                         {% endfor %} 
@@ -95,14 +95,16 @@
     <form method="POST" action="/add_pokemoncardspec" id="addpokemoncardspec">
         <legend><strong>Add User</strong></legend>
         <fieldset class="fields">
-            <!-- Remove the pokemoncardspec_id label since it's auto-incremented -->
-            <label> pokemoncardspecname </label> <input type="text" name="pokemoncardspecname" required>
-            <label> password </label> <input type="text" name="password" required>
-            <label> first_name </label> <input type="text" name="first_name" required>
-            <label> last_name </label> <input type="text" name="last_name" required>
-            <label> email </label> <input type="text" name="email" required>
-            <label> birthday </label> <input type="text" name="birthday" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" required>
-            <label> address </label> <input type="text" name="address" required>
+            <!-- Remove the product_id label since it's auto-incremented -->
+            <label> Product ID </label> <input type="text" name="product_id" required>
+            <label> Card Name </label> <input type="text" name="card_name" required>
+            <label> Price </label> <input type="text" name="price" required>
+            <label> Grade </label> <input type="text" name="grade" required>
+            <label> Holographic </label> <input type="text" name="holographic" required>
+            <label> Edition </label> <input type="text" name="edition" required>
+            <label> Quantity Available </label> <input type="text" name="quantity_available" required>
+            <label> Card Set </label> <input type="text" name="card_set" required>
+            <label> Language </label> <input type="text" name="language" required>
         </fieldset>
         <input class="btn" type="submit" id="addpokemoncardspec" value="Add">
         <input class="btn" type="button" value="cancel" onClick="browsePokemonCardSpecss()">
@@ -114,7 +116,7 @@
     <form method="POST" id="Updatepokemoncardspec">
         <legend><strong>Update pokemoncardspec</strong></legend>
           <fieldset class="fields">
-          <input type="hidden" name="pokemoncardspec_id" id="updatepokemoncardspec_id" value="1">
+          <input type="hidden" name="product_id" id="updateproduct_id" value="1">
           <label> ID: </label> 1
             <label> first name </label> <input type="text" name="fname">
             <label> last name </label> <input type="text" name="lname">
@@ -129,10 +131,10 @@
 {#
 <div id="delete" style="display: block">
   <form method="POST" id="deletepokemoncardspec">
-      <legend><strong>Delete pokemoncardspec</strong></legend>
+      <legend><strong>Delete Pokemoncardspec</strong></legend>
           <fieldset class="fields">
           <p>Are you sure you wish to delete the following?</p>
-          <input type="hidden" name="pokemoncardspec_id" id="deletepokemoncardspec_id">
+          <input type="hidden" name="product_id" id="deleteproduct_id">
           <label><strong>ID:</strong></label> 
             <label> <strong>Name</strong> </label>
             

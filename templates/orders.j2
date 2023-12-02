@@ -96,13 +96,13 @@
         <legend><strong>Add Order</strong></legend>
         <fieldset class="fields">
             <!-- Remove the order_id label since it's auto-incremented -->
-            <label> ordername </label> <input type="text" name="ordername" required>
-            <label> password </label> <input type="text" name="password" required>
-            <label> first_name </label> <input type="text" name="first_name" required>
-            <label> last_name </label> <input type="text" name="last_name" required>
-            <label> email </label> <input type="text" name="email" required>
-            <label> birthday </label> <input type="text" name="birthday" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" required>
-            <label> address </label> <input type="text" name="address" required>
+            <label> Order ID </label> <input type="text" name="order_id" required>
+            <label> User ID </label> <input type="text" name="user_id" required>
+            <label> Product ID </label> <input type="text" name="product_id" required>
+            <label> Shipping ID </label> <input type="text" name="shipping_id" required>
+            <label> Customer Name </label> <input type="text" name="customer_name" required>
+            <label> Quantity Purchased </label> <input type="text" name="quantity_purchased" required>
+            <label> Transaction Date </label> <input type="text" name="transaction_date" required>
         </fieldset>
         <input class="btn" type="submit" id="addorder" value="Add">
         <input class="btn" type="button" value="cancel" onClick="browseOrders()">
