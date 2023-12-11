@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>Shipments</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<h1>Shipments</h1>
+
+[ <a href="users.html">Users</a> | <a href="orders.html">Orders</a> | <a href="shipments.html">Shipments</a> | <a href="payments.html">Payments</a> | <a href="pokemoncardspecs.html">PokemonCardSpecs</a>]
+<div id="browse" style="display: block">
+<p><strong>Browse Shipments</strong></p>
+<table border="1" cellpadding="5">
+  <tr>
+    <th><a href="#">New</a></th>
+    <th></th>
+    <th>Shipping ID</th>
+    <th>User ID</th>
+    <th>Delivery Time</th>
+    <th>Carrier</th>
+    <th>Tracking Number</th>
+  </tr>
+  <tr>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right" >12:00</td>
+    <td align="right">USPS</td>
+    <td align="right">1</td>
+  </tr>
+  <tr>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right" >15:00</td>
+    <td align="right">USPS</td>
+    <td align="right">1</td>
+  </tr>
+  <tr>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right" >11:00</td>
+    <td align="right">USPS</td>
+    <td align="right">1</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert" style="display: block">
+    <form id="addPlanet">
+        <legend><strong>Add Shipment</strong></legend>
+          <fieldset class="fields">
+            <label> Shipping ID </label> <input type="text" name="name">
+            <label> User ID </label> <input type="text" name="population">
+            <label> Delivery Time </label> <input type="text" name="language">
+            <label> Carrier </label> <input type="text" name="language">
+            <label> Tracking Number </label> <input type="text" name="language">
+          </fieldset>
+          <input class="btn" type="submit" id="addPlanet" value="Add a Card">
+          <input class="btn" type="button" value="cancel">
+	</form> <!--add new planet-->
+</div><!-- insert -->
+<p>&nbsp;</p>
+<div id="update" style="display: block">
+  <form id="updatePlanet">
+      <legend><strong>Update Card</strong></legend>
+          <fieldset class="fields">
+          <label> Shipping ID </label> <input type="text" name="name">
+          <label> User ID </label> <input type="text" name="population">
+          <label> Delivery Time </label> <input type="text" name="language">
+          <label> Carrier </label> <input type="text" name="language">
+          <label> Tracking Number </label> <input type="text" name="language">
+    </fieldset>
+    <input class="btn" type="submit" id="UpdateSavePlanet" value="Save Update Card">
+          <input class="btn" type="button" value="cancel" >
+  </form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form id="deletePlanet">
+      <legend><strong>Delete Shipment</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <label>ID:</label> 1
+    </fieldset>
+    <input class="btn" type="submit" id="DeletePlanet" value="Delete Card">
+          <input class="btn" type="button" value="cancel" >
+  </form> 
+</div><!-- delete -->
+</body>
+</html>

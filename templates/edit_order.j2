@@ -1,0 +1,66 @@
+<html>
+
+<head>
+	<title>Edit Order</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div>
+        <table border="1" cellpadding="5"> 
+            <caption> Editing Order: </caption>
+            <!-- Access data tuple passed from app.py -->
+            {% if data %}
+                <thead>
+                    <tr>
+                        <!-- Iterate through each key in the first entry to get the column name -->
+                        {% for key in data[0].keys() %}
+
+                        <!-- Create a <th> tag with the key inside of it, this will be our header row -->
+                        <th scope="col" data-field="{{ key }}" data-filter-control="input">{{ key }}</th>
+                        
+                        <!-- End of this for loop -->
+                        {% endfor %} 
+                    </tr>
+
+                <tbody>
+                    <!-- Now, iterate through every item in data -->
+                    {% for item in data %}
+                    <tr>
+                        <!-- Then iterate through every key in the current item dictionary -->
+                        {% for key in item.keys() %}
+                        
+                        <!-- Create a <td> element with the value of that key in it -->
+                        <td>{{item[key]}}</td> {% endfor %} 
+                    </tr> 
+                    {% endfor %} 
+            {% endif %} 
+        </table>
+
+        <div id="edit">
+            <!-- form to edit data in Orders-->
+            <form id="Edit_Order" action="/edit_order/{{data[0].order_id}}" method="post">
+                <legend><strong>Edit Order</strong></legend>
+                <fieldset>
+                    <input type="hidden" value="{{data[0].order_id}}" class="form-control" id="order_id" name="order_id" required>
+
+                    <input type="hidden" value="{{data[0].user_id}}" class="form-control" id="user_id" name="user_id" required>
+
+                    <input type="hidden" value="{{data[0].product_id}}" class="form-control" id="product_id" name="product_id" required>
+
+                    <input type="hidden" value="{{data[0].shipping_id}}" class="form-control" id="shipping_id" name="shipping_id" required>
+
+                    <label for="model">Customer Name:</label>
+                    <input type="text" value="{{data[0].customer_name}}" class="form-control" id="customer_name" name="customer_name" required>
+
+                    <label for="model">Quantity Purchased:</label>
+                    <input type="text" value="{{data[0].quantity_purchased}}" class="form-control" id="quantity_purchased" name="quantity_purchased" required>
+
+                    <label for="model">Transaction Date:</label>
+                    <input type="text" value="{{data[0].transaction_date}}" class="form-control" id="transaction_date" name="transaction_date" required>
+                
+                </fieldset>
+                <input type="submit" value="Edit Order" name="Order" class="btn btn-primary" style="margin:.5rem;">
+                <a href='/orders'><input class="btn" type="button" value="cancel"></a>
+            </form>
+</html>

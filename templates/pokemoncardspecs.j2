@@ -1,0 +1,155 @@
+<html>
+<head>
+<title>PokemonCardSpecs</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+    function newpokemoncardspec() { showform('insert'); }
+    function updatepokemoncardspec(pid) { showform('update'); }
+    function deletepokemoncardspec(pid) { showform ('delete'); }
+    function browsePokemonCardSpecss() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+</script>
+</head>
+
+<body onload="browsePokemonCardSpecss()">
+    <h1>PokemonCardSpecs</h1>
+    <nav>
+        <ul>
+            <li><a href="users">Users</a></li>
+            <li><a href="orders">Orders</a></li>
+            <li><a href="shipments">Shipments</a></li>
+            <li><a href="payments">Payments</a></li>
+            <li><a href="pokemoncardspecs">PokemonCardSpecs</a></li>
+        </ul>
+    </nav>
+    <div id="browse">
+        <p><a href="#" onClick="showAll()">Add PokemonCardSpec</a> </p>
+        <table border="1" cellpadding="5">
+            <!-- Access data tuple passed from app.py --> 
+            {% if data %}
+			    <thead>
+				    <tr>
+					    <!-- Iterate through each key in the first entry to get the column name -->
+                        {% for key in data[0].keys() %}
+					    
+                        <!-- Create a <th> tag with the key inside of it, this will be our header row -->
+					    <th scope="col" data-field="{{ key }}" data-filter-control="input">{{ key }}</th>
+					
+                        <!-- End of this for loop -->
+                        {% endfor %} 
+                    </tr>
+    
+				<tbody>
+					<!-- Now, iterate through every item in data -->{% for item in data %}
+					    <tr>
+						    <!-- Then iterate through every key in the current item dictionary -->
+                            {% for key in item.keys() %}
+
+						    <!-- Create a <td> element with the value of that key in it -->
+						    <td> {{item[key]}} </td> 
+                            {% endfor %}
+
+                            <!-- Create our edit/delete buttons -->
+						    <td><a href="edit_pokemoncardspec/{{item.product_id}}" class="btn btn-default">Edit</a></td>
+						    <td><a href="delete_pokemoncardspec/{{item.product_id}}" class="btn btn-default">Delete</a></td>
+
+					    </tr> 
+                        {% endfor %} 
+                {% endif %} 
+        </table>   
+	<p>&nbsp;</p>
+	</div>	<!-- browse -->
+
+
+
+<div id="insert">
+    <form method="POST" action="/add_pokemoncardspec" id="addpokemoncardspec">
+        <legend><strong>Add User</strong></legend>
+        <fieldset class="fields">
+            <!-- Remove the product_id label since it's auto-incremented -->
+            <label> Product ID </label> <input type="text" name="product_id" required>
+            <label> Card Name </label> <input type="text" name="card_name" required>
+            <label> Price </label> <input type="text" name="price" required>
+            <label> Grade </label> <input type="text" name="grade" required>
+            <label> Holographic </label> <input type="text" name="holographic" required>
+            <label> Edition </label> <input type="text" name="edition" required>
+            <label> Quantity Available </label> <input type="text" name="quantity_available" required>
+            <label> Card Set </label> <input type="text" name="card_set" required>
+            <label> Language </label> <input type="text" name="language" required>
+        </fieldset>
+        <input class="btn" type="submit" id="addpokemoncardspec" value="Add">
+        <input class="btn" type="button" value="cancel" onClick="browsePokemonCardSpecss()">
+    </form>
+</div><!-- insert -->
+<p>&nbsp;</p>
+{#
+<div id="update">
+    <form method="POST" id="Updatepokemoncardspec">
+        <legend><strong>Update pokemoncardspec</strong></legend>
+          <fieldset class="fields">
+          <input type="hidden" name="product_id" id="updateproduct_id" value="1">
+          <label> ID: </label> 1
+            <label> first name </label> <input type="text" name="fname">
+            <label> last name </label> <input type="text" name="lname">
+            <label> age </label> <input type="text" name="age">
+      </fieldset>
+          <input class="btn" type="submit" id="UpdateSavepokemoncardspec" value="Save">
+          <input class="btn" type="button" value="cancel" onClick="browsePokemonCardSpecss()">
+	</form> 
+</div><!-- update -->
+#}
+<p>&nbsp;</p>
+{#
+<div id="delete" style="display: block">
+  <form method="POST" id="deletepokemoncardspec">
+      <legend><strong>Delete Pokemoncardspec</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <input type="hidden" name="product_id" id="deleteproduct_id">
+          <label><strong>ID:</strong></label> 
+            <label> <strong>Name</strong> </label>
+            
+    </fieldset>
+    <input class="btn" type="submit" id="Deletepokemoncardspec" value="Delete">
+          <input class="btn" type="button" value="cancel" onClick="browsePokemonCardSpecss()">
+  </form> 
+</div><!-- delete -->
+#}
+</body>
+</html>

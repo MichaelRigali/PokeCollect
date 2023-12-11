@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>Users</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+<script language="JavaScript">
+		function showform(dowhat) {
+			/*
+			* four DIVS: browse, insert, update, delete
+			* this function sets one visible the others not
+			*/
+			if (dowhat == 'insert'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'update'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'none';
+			}
+			else if (dowhat == 'delete'){
+				document.getElementById('browse').style.display = 'none';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'block';
+			}
+      else if (dowhat == 'all'){
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'block';
+				document.getElementById('update').style.display = 'block';
+				document.getElementById('delete').style.display = 'block';
+			}
+			else { //by default display browse
+				document.getElementById('browse').style.display = 'block';
+				document.getElementById('insert').style.display = 'none';
+				document.getElementById('update').style.display = 'none';
+				document.getElementById('delete').style.display = 'none';
+			}
+		}
+    function newPerson() { showform('insert'); }
+    function updatePerson(pid) { showform('update'); }
+    function deletePerson(pid) { showform ('delete'); }
+    function browsePeople() { showform ('browse'); }
+    function showAll() { showform ('all'); }
+  </script>
+</head>
+
+  <body onload="browsePeople()">
+    <h1>Users</h1>
+    <nav>
+      <ul>
+          <li><a href="users.html">Users</a></li>
+          <li><a href="orders.html">Orders</a></li>
+          <li><a href="shipments.html">Shipments</a></li>
+          <li><a href="payments.html">Payments</a></li>
+          <li><a href="pokemoncardspecs.html">PokemonCardSpecs</a></li>
+      </ul>
+  </nav>
+    <div id="browse">
+      <p id=""><a href="#" onClick="showAll()">Display all forms</a> </p>
+      <p>&nbsp;</p>
+    </div> <!-- browse -->
+    <div id="insert">
+      <form method="POST" id="addUser">
+        <legend><strong>Add User</strong></legend>
+        <fieldset class="fields">
+          <label> username </label> <input type="text" name="fname">
+          <label> password </label> <input type="text" name="lname">
+          <label> first_name </label> <input type="text" name="age">
+          <label> last_name </label> <input type="text" name="age">
+          <label> email </label> <input type="text" name="age">
+          <label> birthday </label> <input type="emailtext" name="age" placeholder="YYYY-MM-DD" required>
+          <label> address </label> <input type="text" name="age">
+        </fieldset>
+        <input class="btn" type="submit" id="addPerson" value="Add Person">
+        <input class="btn" type="button" value="cancel" onClick="browsePeople()">
+      </form> 
+    </div><!-- insert -->
+    <p>&nbsp;</p>
+    <div id="update">
+      <form method="POST" id="UpdatePerson">
+        <legend><strong>Update Person</strong></legend>
+        <fieldset class="fields">
+          <input type="hidden" name="personID" id="updatepersonID" value="1">
+          <label> ID: </label> 1
+          <label> first name </label> <input type="text" name="fname">
+          <label> last name </label> <input type="text" name="lname">
+          <label> age </label> <input type="text" name="age" >
+        </fieldset>
+        <input class="btn" type="submit" id="UpdateSavePerson" value="Save Update Person">
+        <input class="btn" type="button" value="cancel" onClick="browsePeople()">
+      </form> 
+    </div><!-- update -->
+    <p>&nbsp;</p>
+    <div id="delete" style="display: block">
+      <form method="POST" id="deletePerson">
+        <legend><strong>Delete Person</strong></legend>
+        <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <input type="hidden" name="personID" id="deletepersonID" value="1">
+          <label><strong>ID:</strong></label> 
+          <label> <strong>Name:</strong> </label> 
+          
+        </fieldset>
+        <input class="btn" type="submit" id="DeletePerson" value="Delete Person">
+        <input class="btn" type="button" value="cancel" onClick="browsePeople()">
+      </form> 
+    </div><!-- delete -->
+    
+  </body>
+  </html>
+  

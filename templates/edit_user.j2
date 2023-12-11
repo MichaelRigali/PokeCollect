@@ -1,0 +1,72 @@
+<html>
+
+<head>
+	<title>Edit Users</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div>
+        <table border="1" cellpadding="5"> 
+            <caption> Editing User: </caption>
+            <!-- Access data tuple passed from app.py -->
+            {% if data %}
+                <thead>
+                    <tr>
+                        <!-- Iterate through each key in the first entry to get the column name -->
+                        {% for key in data[0].keys() %}
+
+                        <!-- Create a <th> tag with the key inside of it, this will be our header row -->
+                        <th scope="col" data-field="{{ key }}" data-filter-control="input">{{ key }}</th>
+                        
+                        <!-- End of this for loop -->
+                        {% endfor %} 
+                    </tr>
+
+                <tbody>
+                    <!-- Now, iterate through every item in data -->
+                    {% for item in data %}
+                    <tr>
+                        <!-- Then iterate through every key in the current item dictionary -->
+                        {% for key in item.keys() %}
+                        
+                        <!-- Create a <td> element with the value of that key in it -->
+                        <td>{{item[key]}}</td> {% endfor %} 
+                    </tr> 
+                    {% endfor %} 
+            {% endif %} 
+        </table>
+
+        <div id="edit">
+            <!-- form to edit data in Users-->
+            <form id="Edit_User" action="/edit_user/{{data[0].user_id}}" method="post">
+                <legend><strong>Edit User</strong></legend>
+                <fieldset>
+                    <input type="hidden" value="{{data[0].user_id}}" class="form-control" id="user_id" name="user_id" required>
+
+                    <label for="make">Username:</label>
+                    <input type="text" value="{{data[0].username}}" class="form-control" id="username" name="username" pattern="[a-zA-Z0-9_-]+" required>
+
+                    <label for="model">Password:</label>
+                    <input type="text" value="{{data[0].password}}" class="form-control" id="password" name="password" pattern="[A-Za-z0-9]{1,}" required>
+
+                    <label for="model">Email:</label>
+                    <input type="emailtext" value="{{data[0].email}}" class="form-control" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+
+                    <label for="model">First Name:</label>
+                    <input type="text" value="{{data[0].first_name}}" class="form-control" id="first_name" name="first_name" pattern="[A-Za-z0-9]{1,}" required>
+
+                    <label for="model">Last Name:</label>
+                    <input type="text" value="{{data[0].last_name}}" class="form-control" id="last_name" name="last_name" pattern="[A-Za-z0-9]{1,}" required>
+                        
+                    <label for="model">Birthday:</label>
+                    <input type="text" value="{{data[0].birthday}}" class="form-cAddressontrol" id="birthday" name="birthday" pattern="\d{4}-\d{2}-\d{2}" required>
+
+                    <label for="model">Address:</label>
+                    <input type="text" value="{{data[0].address}}" class="form-control" id="address" name="address" pattern=".*" required>
+                
+                </fieldset>
+                <input type="submit" value="Edit_User" name="User" class="btn btn-primary" style="margin:.5rem;">
+                <a href='/users'><input class="btn" type="button" value="cancel"></a>
+            </form>
+</html>

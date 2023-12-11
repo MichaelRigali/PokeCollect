@@ -1,0 +1,63 @@
+<html>
+
+<head>
+	<title>Edit Shipment</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div>
+        <table border="1" cellpadding="5"> 
+            <caption> Editing Shipment: </caption>
+            <!-- Access data tuple passed from app.py -->
+            {% if data %}
+                <thead>
+                    <tr>
+                        <!-- Iterate through each key in the first entry to get the column name -->
+                        {% for key in data[0].keys() %}
+
+                        <!-- Create a <th> tag with the key inside of it, this will be our header row -->
+                        <th scope="col" data-field="{{ key }}" data-filter-control="input">{{ key }}</th>
+                        
+                        <!-- End of this for loop -->
+                        {% endfor %} 
+                    </tr>
+
+                <tbody>
+                    <!-- Now, iterate through every item in data -->
+                    {% for item in data %}
+                    <tr>
+                        <!-- Then iterate through every key in the current item dictionary -->
+                        {% for key in item.keys() %}
+                        
+                        <!-- Create a <td> element with the value of that key in it -->
+                        <td>{{item[key]}}</td> {% endfor %} 
+                    </tr> 
+                    {% endfor %} 
+            {% endif %} 
+        </table>
+
+        <div id="edit">
+            <!-- form to edit data in Shipments-->
+            <form id="Edit_Shipment" action="/edit_shipment/{{data[0].shipping_id}}" method="post">
+                <legend><strong>Edit Shipment</strong></legend>
+                <fieldset>
+                    <input type="hidden" value="{{data[0].shipping_id}}" class="form-control" id="shipping_id" name="shipping_id" required>
+
+                    <label for="model">User ID:</label>
+                    <input type="hidden" value="{{data[0].user_id}}" class="form-control" id="user_id" name="user_id" required>
+
+                    <label for="model">Delivery Time:</label>
+                    <input type="emailtext" value="{{data[0].delivery_time}}" class="form-control" id="delivery_time" name="delivery_time" required>
+
+                    <label for="model">Carrier:</label>
+                    <input type="text" value="{{data[0].carrier}}" class="form-control" id="first_name" name="carrier" required>
+
+                    <label for="model">Tracking Number:</label>
+                    <input type="text" value="{{data[0].tracking_number}}" class="form-control" id="tracking_number" name="tracking_number" required>
+                
+                </fieldset>
+                <input type="submit" value="Edit Shipment" name="Shipment" class="btn btn-primary" style="margin:.5rem;">
+                <a href='/shipments'><input class="btn" type="button" value="cancel"></a>
+            </form>
+</html>

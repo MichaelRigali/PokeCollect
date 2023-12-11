@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>PokemonCardSpecs</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<h1>PokemonCardSpecs</h1>
+
+[ <a href="users.html">Users</a> | <a href="orders.html">Orders</a> | <a href="shipments.html">Shipments</a> | <a href="payments.html">Payments</a> | <a href="pokemoncardspecs.html">PokemonCardSpecs</a>]
+<div id="browse" style="display: block">
+<p><strong>Browse Card Specs</strong></p>
+<table border="1" cellpadding="5">
+  <tr>
+    <th><a href="#">New</a></th>
+    <th></th>
+    <th>Product ID</th>
+    <th>Card Name</th>
+    <th>Price</th>
+    <th>Grade</th>
+    <th>Holographic</th>
+    <th>Edition</th>
+    <th>Quantity Available</th>
+    <th>Set</th>
+    <th>Language</th>
+  </tr>
+  <tr>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+    <td align="right" >1</td>
+    <td align="right" >Charizard</td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right ">Holographic</td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right" >English</td>
+  </tr>
+  <tr>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+    <td align="right" >1</td>
+    <td align="right" >Blastoise</td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right ">Holographic</td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right" >English</td>
+  </tr>
+  <tr>
+    <td><a href="#">Edit</a></td>
+    <td><a href="#">Delete</a></td>
+    <td align="right" >1</td>
+    <td align="right" >Venusaur</td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right ">Holographic</td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right" >1</td>
+    <td align="right" >English</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div> <!-- browse -->
+<div id="insert" style="display: block">
+    <form id="addPlanet">
+        <legend><strong>Add Card Specs</strong></legend>
+          <fieldset class="fields">
+            <label> Product ID </label> <input type="text" value="1" name="name">
+            <label> Card Name </label> <input type="text"  name="population">
+            <label> Price </label> <input type="text" name="language">
+            <label> Grade </label> <input type="text" name="language">
+            <label> Holographic </label> <input type="text" name="language">
+            <label> Edition </label> <input type="text" name="language">
+            <label> Quantitiy Available </label> <input type="text" name="language">
+            <label> Set </label> <input type="text" name="language">
+            <label> Language </label> <input type="text" name="language">
+          </fieldset>
+          <input class="btn" type="submit" id="addPlanet" value="Add a Card">
+          <input class="btn" type="button" value="cancel">
+	</form> <!--add new planet-->
+</div><!-- insert -->
+<p>&nbsp;</p>
+<div id="update" style="display: block">
+  <form id="updatePlanet">
+      <legend><strong>Update Card Specs</strong></legend>
+          <fieldset class="fields">
+            <label> Product ID </label> <input type="text" value="1" name="name">
+            <label> Card Name </label> <input type="text"  name="population">
+            <label> Price </label> <input type="text" name="language">
+            <label> Grade </label> <input type="text" name="language">
+            <label> Holographic </label> <input type="text" name="language">
+            <label> Edition </label> <input type="text" name="language">
+            <label> Quantitiy Available </label> <input type="text" name="language">
+            <label> Set </label> <input type="text" name="language">
+            <label> Language </label> <input type="text" name="language">
+    </fieldset>
+    <input class="btn" type="submit" id="UpdateSavePlanet" value="Save Update Card">
+          <input class="btn" type="button" value="cancel" >
+  </form> 
+</div><!-- update -->
+<p>&nbsp;</p>
+<div id="delete" style="display: block">
+  <form id="deletePlanet">
+      <legend><strong>Delete Card Specs</strong></legend>
+          <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <label>ID:</label> 1        
+    </fieldset>
+    <input class="btn" type="submit" id="DeletePlanet" value="Delete Card">
+          <input class="btn" type="button" value="cancel" >
+  </form> 
+</div><!-- delete -->
+</body>
+</html>
