@@ -49,8 +49,20 @@
 
 <body onload="browseUsers()">
     <h1>Users</h1>
+<<<<<<< HEAD
     [ <a href="users">Users</a> | <a href="orders">Orders</a> | <a href="shipments">Shipments</a> | <a href="payments">Payments</a> | <a href="pokemoncardspecs">PokemonCardSpecs</a>]
 
+=======
+    <nav>
+        <ul>
+            <li><a href="users">Users</a></li>
+            <li><a href="orders">Orders</a></li>
+            <li><a href="shipments">Shipments</a></li>
+            <li><a href="payments">Payments</a></li>
+            <li><a href="pokemoncardspecs">PokemonCardSpecs</a></li>
+        </ul>
+    </nav>
+>>>>>>> master
     <div id="browse">
         <p><a href="#" onClick="showAll()">Add User</a> </p>
         <table border="1" cellpadding="5">
@@ -79,8 +91,13 @@
                             {% endfor %}
 
                             <!-- Create our edit/delete buttons -->
+<<<<<<< HEAD
 						    <td><a href="edit_user/{{item.user_id}}" class="btn btn-default">Edit</a></td>
 						    <td><a href="delete_user/{{item.user_id}}" class="btn btn-default">Delete</a></td>
+=======
+						    <td><a href="edit_user/{{item.user_id}}" class="btn btn-default" id="edit">Edit</a></td>
+						    <td><a href="delete_user/{{item.user_id}}" class="btn btn-default" id="delete">Delete</a></td>
+>>>>>>> master
 
 					    </tr> 
                         {% endfor %} 

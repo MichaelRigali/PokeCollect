@@ -1,3 +1,173 @@
+<<<<<<< HEAD
 /* CSS Document */
 
 
+=======
+/* CSS Document */
+
+/* style.css */
+
+@font-face {
+    font-family: 'ArcadeFont';
+    src: url(/static/fonts/ARCADE.TTF) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-image: url(/static/pokeball.png);
+    font-family: 'ArcadeFont', sans-serif;
+}
+
+h1 {
+    border: 2px solid black;
+    text-shadow: 2px 2px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black; /* Width and color of the border */
+    margin-top: 30px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 0px;
+    background-color: #e64f53;
+    color: white;
+    font-family: 'ArcadeFont', sans-serif;
+    font-size: 85px;
+}
+
+nav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: left;
+}
+
+nav a {
+    text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black; /* Width and color of the border */
+    border: 1px solid black;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-size: 35px;
+}
+
+nav a:hover {
+    background-color: #ddd;
+    color: #fff045;
+}
+
+p {
+    font-size: 45px;
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+fieldset {
+    font-size: 30px;
+}
+
+thead {
+    font-size: 35px;
+    background-color: #e54f53;
+    }
+
+tbody {
+    font-size: 28px;
+    text-align: center;
+    background-color: #e28c7e;
+}
+
+table {
+    opacity: 92%;
+    text-shadow: 1px 1px 0 rgb(35, 35, 35), -1px -1px 0 rgb(35, 35, 35), 1px -1px 0 rgb(35, 35, 35), -1px 1px 0 rgb(35, 35, 35); /* Width and color of the border */
+    border-collapse: collapse;
+    margin-left: 35px;
+    color: white;
+    background-color: #e54f53;
+}
+
+th, td {
+    border: 2px solid black; /* Add border only to cells */
+    padding: 8px;
+    text-align: center;
+}
+
+#edit {
+    background-color: #383434; /* Green background color */
+    color: #4CAF50; /* White text color */
+    padding: 5px 10px; /* Padding for better appearance */
+    text-decoration: none; /* Remove default text underline */
+    display: inline-block; /* Make the buttons display as inline-block */
+    margin-right: 5px; /* Add some margin between the buttons */
+    border: 1px solid #4CAF50; /* Green border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+legend {
+    font-size: 30px;
+    margin-left: 30px;
+    padding-top: 10px;
+}
+
+form {
+    background-color: #e28c7e;
+    text-shadow: 1px 1px 0 rgb(35, 35, 35), -1px -1px 0 rgb(35, 35, 35), 1px -1px 0 rgb(35, 35, 35), -1px 1px 0 rgb(35, 35, 35); /* Width and color of the border */
+    color: white;
+    border: 2px solid black;
+    opacity: 92%;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column; /* Display items vertically */
+    max-width: 400px; /* Optional: Set a maximum width for the form */
+    margin: 0 auto; /* Optional: Center the form horizontally */
+}
+
+form label {
+    margin-bottom: 5px; /* Optional: Add some spacing between labels */
+}
+
+form input {
+    padding: 5px; /* Optional: Add padding to inputs for better spacing */
+    margin-bottom: 10px; /* Optional: Add some spacing between inputs */
+}
+
+#browse a {
+    background-color: black;
+    padding-top: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    background-color: #383434;
+    color: #4CAF50;
+    border: 2px solid #4CAF50; /* Green border */
+    opacity: 92%;
+    text-decoration: none;
+}
+
+#browse a:hover {
+    background-color: 4CAF50;
+    color: #fff045;
+}
+
+#delete {
+    background-color: #383434; /* Green background color */
+    color: #e54f53; /* White text color */
+    padding: 5px 10px; /* Padding for better appearance */
+    text-decoration: none; /* Remove default text underline */
+    display: inline-block; /* Make the buttons display as inline-block */
+    margin-right: 5px; /* Add some margin between the buttons */
+    border: 1px solid #e54f53; /* Green border */
+    border-radius: 5px; /* Rounded corners */
+}
+>>>>>>> master
