@@ -318,6 +318,37 @@ def delete_payment(id):
     # Redirect back to the payments page
     return redirect("/payments")
 
+@app.route("/edit_payment/<int:payment_id>", methods=["POST", "GET"])
+def edit_payment(payment_id):
+    if request.method == "GET":
+        # mySQL query to grab the info of the person with our passed id
+        query = "SELECT * FROM Payments WHERE payment_id = %s" % (payment_id)
+        cur = mysql.connection.cursor()
+        cur.execute(query)
+        data = cur.fetchall()
+
+        # render edit_shipment page passing our query data to the edit_shipment template
+        return render_template("edit_payment.j2", data=data)
+
+    # meat and potatoes of our update functionality
+    if request.method == "POST":
+        # fire off if user clicks the 'Edit Person' button
+
+        # grab shipment form inputs
+        payment_id = request.form['payment_id']
+        payment_amount = request.form['payment_amount']
+        order_id = request.form['order_id']
+        currency = request.form['currency']
+        payment_method = request.form['payment_method']
+
+        # call update query
+        query = "UPDATE Payments SET Payments.payment_id = %s, Payments.payment_amount = %s, Payments.order_id = %s, Payments.currency = %s, Payments.payment_method = %s WHERE payment_id = %s"
+        cur = mysql.connection.cursor()
+        cur.execute(query, (payment_id, payment_amount, order_id, currency, payment_method, payment_id))
+        mysql.connection.commit()
+
+        return redirect("/payments")
+
 @app.route('/pokemoncardspecs', methods=["POST", "GET"])
 def pokemoncardspecs():
 
@@ -405,4 +436,4 @@ def delete_pokemoncardspec(id):
 # Listener
 # change the port number if deploying on the flip servers
 if __name__ == "__main__":
-    app.run(port=41037, debug=True)
+    app.run(port=41039, debug=True)
