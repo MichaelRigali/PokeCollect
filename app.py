@@ -1,3 +1,5 @@
+# this module adapted from the starter code
+
 from flask import Flask, render_template, json, redirect, request
 from flask_mysqldb import MySQL
 import os

@@ -1,14 +1,5 @@
-<<<<<<< HEAD
-
 venv/
 
 /.vscode
 
-=======
-
-venv/
-
-/.vscode
-
->>>>>>> master
 .env
